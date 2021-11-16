@@ -1,21 +1,20 @@
-import React from 'react';
-import { Link } from "react-router-dom"
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
-class Home extends React.Component {
-    render() {
-        return (
-             <div>
-                {this.props.movies.map((movie) => (
-					<Link 
-                        to={`/${movie.id}`}
-						style={{ display: "block", margin: "1rem" }}
-					>
-						{movie.title}
-					</Link>
-				))}
-             </div>
-        );
-    }
+import movies from '../movies.json'
+
+class Home extends Component {
+  render() {
+    return (
+      <>
+        {movies.map(movie => (
+          <Link key={movie.title} to={`/movies/${movie.id}`}>
+            <p>{movie.title}</p>
+          </Link>
+        ))}
+      </>
+    );
+  }
 }
 
 export default Home
